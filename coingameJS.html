@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CoinGame</title>
+</head>
+<style>
+    body{
+        
+        margin: 0px;
+        cursor:url("./4051294_cursors-roblox-cursor-png-hd-png-download.png"),auto ;
+             
+        
+    }
+    #coins {
+        width: 100vw;
+        height: 100vh;
+        background-color: crimson;
+        position: relative;
+        cursor:url("./A\ Red\ Mouse\ Pointer.cur"),auto ;
+             }
+      #Score{
+          position: absolute;
+          top: 30px;
+          left: 20px;
+          
+      }
+      
+
+</style>
+<body>
+   <div id="coins">
+        <h1> <u><center>1st Learning Game using HTML/CSS/JS</u></center></h1>
+       <h1 id="Score"><u><i>Score:0</i></u></h1> 
+
+   </div> 
+<script>
+    let coins = document.getElementById("coins");
+     let scores =document.getElementById("Score");
+     let score =0;
+     let music = new Audio("./coin-drop-4.mp3")
+    
+    setInterval(function () {
+        let coin = document.createElement("img");
+        coin.src="coin.png";
+        let alive = true;
+        let h= parseInt(window.innerHeight-50)*Math.random();
+        let w= parseInt(window.innerWidth-50)*Math.random();
+        coin.style.setProperty("position", "absolute");
+        coin.style.setProperty("bottom", `${h}px`);
+        coin.style.setProperty("left", `${w}px`);
+        coin.style.setProperty("height", "50px");
+        coin.style.setProperty("width", "50px");
+          coins.appendChild(coin);
+          coin.onmouseover= function(){
+            coins.removeChild(coin);
+               score+=1;
+              scores.innerHTML=" Scores:"+ `${score}` ;
+              music.play();
+              alive=false;
+             
+          }
+          setTimeout(() => {
+              if(alive){
+              coins.removeChild(coin);
+             
+              }
+              
+          }, 2000);
+
+    }, 500);
+    
+
+</script>
+</body>
+</html>
